@@ -24,6 +24,11 @@ def find():
     return ergs
 
 def release(arrPyrow):
+    for i in range(len(arrPyrow)):
+        p = arrPyrow[i]
+        if p!=0:
+            p.release()
+            arrPyrow[i] = 0
     for p in arrPyrow:
         if p!=0:
             p.release()
