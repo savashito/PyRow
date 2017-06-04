@@ -25,7 +25,8 @@ def find():
 
 def release(arrPyrow):
     for p in arrPyrow:
-        p.release()
+        if p!=0:
+            p.release()
 
 
 class pyrow(object):
