@@ -23,6 +23,10 @@ def find():
         raise ValueError('Ergs not found')
     return ergs
 
+def release(arrPyrow):
+    for p in arrPyrow:
+        p.release()
+
 
 class pyrow(object):
 
@@ -59,6 +63,11 @@ class pyrow(object):
         self.outEndpoint = iface[1].bEndpointAddress
 
         self.__lastsend = datetime.datetime.now()
+    # def __del__(self):
+    def release(self):
+        if(self.erg):
+            usb.util.release_interface(self.erg, INTERFACE)
+            self.erg = None
 
     @classmethod
     def __checkvalue(cls, value, label, minimum, maximum):
